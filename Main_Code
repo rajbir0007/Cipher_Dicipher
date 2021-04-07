@@ -1,0 +1,56 @@
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class gui {
+
+    public static void main(String[] args)
+    {
+        new myFrame();
+    }
+
+}
+class myFrame extends Frame implements ActionListener
+{
+
+       Button b;
+       TextField t1,t2;
+       TextField key;
+    public myFrame()
+    {
+        setLayout(new FlowLayout());
+        b=new Button("ok");
+        t1=new TextField(5);
+        key=new TextField(1);
+        b.addActionListener(this);
+        add(b);
+        b.setBounds(50,200, 100,30);  
+        add(t1);
+        t1.setBounds(50,100, 100,30);  
+        add(key);
+        key.setBounds(50,150, 100,30); 
+        t2.setBounds(50,250, 100,30);  
+        setVisible(true);
+        setSize(400,400);
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        execute();
+    }
+
+    public void  execute(Graphics g) {
+
+        String original=t1.getText();
+        int k=Integer.parseInt(key.getText());
+        char [] chars=original.toCharArray();
+        for(char c:chars)
+        {
+        c+=k;
+        }
+        t2.setText(String.valueOf(c));
+    }
+}
